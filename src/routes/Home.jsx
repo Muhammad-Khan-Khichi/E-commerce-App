@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 function Home() {
 const items = useSelector((store) => store.items || []);
 
-  console.log(items);
   
   
   if (!items) return <p>Loading...</p>;
