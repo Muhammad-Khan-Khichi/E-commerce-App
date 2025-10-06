@@ -1,9 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit"
 import img1 from "../assets/images/1.jpg";
 
-const DEFAULT_ITEMS = {
-  "items": [
-    [
+const DEFAULT_ITEMS = [
       {
         "id": "001",
         "image": img1,
@@ -98,9 +96,7 @@ const DEFAULT_ITEMS = {
         "delivery_date": "10 Oct 2023",
         "rating": { "stars": 4.2, "count": 5200 }
       }
-    ]
   ]
-}
 
 
 const itemsSlice = createSlice({
