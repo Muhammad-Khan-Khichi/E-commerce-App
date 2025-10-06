@@ -1,56 +1,83 @@
+import { FaShoppingCart } from "react-icons/fa";
+import {useDispatch, useSelector} from "react-redux"
+import { cartAction } from "../store/cartSlice";
+import { IoAddCircleOutline } from "react-icons/io5";
+import { IoIosRemoveCircleOutline } from "react-icons/io";
+
 function HomeItem({ item }) {
+  const dispatch = useDispatch();
+  const cartItems = useSelector(store => store.cart);
+  const elemFound = cartItems.indexOf(item.id) >= 0;
+
+
+  const handleAddToCart = () => {
+    dispatch(cartAction.addToCart(item.id))
+    console.log("cart added");
+  }
+
+  const handleRemoveToCart = () => {
+    dispatch(cartAction.removeToCart(item.id))
+  }
+
   return (
-    <div className="bg-white rounded-2xl shadow-md hover:shadow-xl p-4 flex flex-col gap-3 relative overflow-hidden group cursor-pointer transition-all duration-300">
-
-      {/* Discount badge */}
-      {item.discount_percentage > 0 && (
-        <span className="absolute top-3 left-3 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded-lg shadow-md">
-          {item.discount_percentage}% OFF
-        </span>
-      )}
-
-      {/* Product image */}
-      <div className="w-full h-56 flex items-center justify-center bg-gray-50 rounded-xl overflow-hidden">
+    <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col h-full">
+      {/* Product Image */}
+      <div className="w-full h-64 overflow-hidden">
         <img
           src={item.image}
           alt={item.item_name}
-          className="object-contain max-h-full transition-transform duration-300 group-hover:scale-110"
+          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
         />
       </div>
 
-      {/* Company name */}
-      <h3 className="text-gray-800 font-semibold text-base mt-2">
-        {item.company}
-      </h3>
-
-      {/* Item name */}
-      <p className="text-gray-500 text-sm line-clamp-2">{item.item_name}</p>
-
-      {/* Price and rating section */}
-      <div className="flex items-center justify-between mt-auto">
-        {/* Prices */}
-        <div>
-          <div className="text-lg font-bold text-indigo-600">
-            ₹{item.current_price}
-          </div>
-          <div className="text-sm text-gray-400 line-through">
-            ₹{item.original_price}
-          </div>
+      {/* Product Details */}
+      <div className="p-4 flex flex-col justify-between flex-grow">
+        {/* Rating */}
+        <div className="flex items-center text-yellow-500 font-medium text-sm">
+          <span>{item.rating.stars} ★</span>
+          <span className="text-gray-500 ml-1">({item.rating.count})</span>
         </div>
 
-        {/* Rating */}
-        <div className="flex items-center gap-1 bg-yellow-100 text-yellow-700 px-2 py-1 rounded-md text-sm font-medium">
-          <span>⭐ {item.rating?.stars ?? 0}</span>
-          <span className="text-xs text-gray-500">
-            ({item.rating?.count ?? 0})
+        {/* Company & Item Name */}
+        <h2 className="text-lg font-semibold text-gray-900 mt-2 truncate">
+          {item.company}
+        </h2>
+        <p className="text-sm text-gray-600 truncate">{item.item_name}</p>
+
+        {/* Price Section */}
+        <div className="flex items-center justify-between mt-3">
+          <span className="text-xl font-bold text-green-600">
+            ${item.current_price}
+          </span>
+          <span className="text-sm text-gray-400 line-through">
+            ${item.original_price}
           </span>
         </div>
-      </div>
 
-      {/* Add to Cart Button (appears on hover) */}
-      <button className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-indigo-600 text-white text-sm font-medium px-4 py-2 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        Add to Cart
-      </button>
+        {/* Discount */}
+        {item.discount_percentage > 0 && (
+          <span className="text-red-500 text-sm font-medium mt-1">
+            {item.discount_percentage}% OFF
+          </span>
+        )}
+
+        {/* Add to Cart Button */}
+        {
+          elemFound ?         <button
+        onClick={handleRemoveToCart }
+        className="w-full mt-4 flex items-center justify-center gap-2 cursor-pointer active:scale-[0.98] bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded-lg transition-all duration-200">
+          {/* <FaShoppingCart className="text-lg" /> */}
+          <IoIosRemoveCircleOutline className="text-lg" />
+          Remove to Cart
+        </button> :         <button
+        onClick={handleAddToCart }
+        className="w-full mt-4 flex items-center justify-center gap-2 cursor-pointer active:scale-[0.98] bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded-lg transition-all duration-200">
+          <IoAddCircleOutline className="text-lg"  />
+          Add to Cart
+        </button>
+        }
+
+      </div>
     </div>
   );
 }
