@@ -1,30 +1,45 @@
-
-
 function CartSummary() {
   return (
-    <div className="shadow-2xl p-4">
-      <h2 className="font-bold">  PRICE DETAILS (3 items)  </h2>
-      <div className="flex items-center justify-between font-semibold my-2">
-        <h2>Total MRP</h2>
-        <p>  $2345  </p>
-      </div>
-      <div className="flex items-center justify-between font-semibold my-2">
-        <h2>Discount on MRP</h2>
-        <p>  -$999  </p>
-      </div>
-      <div className="flex items-center justify-between font-semibold my-2">
-        <h2>Commerce Fee</h2>
-        <p>  $99  </p>
-      </div>
-      <hr />
-      <div className="flex items-center justify-between font-semibold my-2">
-        <h2>Total Amount</h2>
-        <p>  $3345  </p>
-      </div>
-      <button className="p-2 bg-red-400  rounded text-lg text-white font-medium  my-2 w-full cursor-pointer focus:outline-0 active:scale-[0.98]">PLACE ORDER</button>
+    <div className="w-full max-w-sm bg-white shadow-2xl rounded-2xl p-6">
+      {/* Header */}
+      <h2 className="font-bold text-lg border-b pb-2 text-gray-800">
+        PRICE DETAILS <span className="text-gray-500 font-medium">(3 items)</span>
+      </h2>
 
+      {/* Price Rows */}
+      <div className="mt-4 space-y-3 text-gray-700">
+        <div className="flex justify-between font-medium">
+          <span>Total MRP</span>
+          <span>$2345</span>
+        </div>
+
+        <div className="flex justify-between font-medium">
+          <span>Discount on MRP</span>
+          <span className="text-green-600">−$999</span>
+        </div>
+
+        <div className="flex justify-between font-medium">
+          <span>Commerce Fee</span>
+          <span>$99</span>
+        </div>
+      </div>
+
+      <hr className="my-4" />
+
+      {/* Total */}
+      <div className="flex justify-between text-lg font-semibold text-gray-900">
+        <span>Total Amount</span>
+        <span>$3345</span>
+      </div>
+
+      {/* Button */}
+      <button
+        className="mt-6 w-full bg-red-500 hover:bg-red-600 active:scale-[0.98] transition-all text-white font-semibold text-lg py-3 rounded-lg focus:outline-none"
+      >
+        PLACE ORDER
+      </button>
     </div>
-  )
+  );
 }
 
-export default CartSummary
+export default CartSummary;

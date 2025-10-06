@@ -1,5 +1,13 @@
 import {createSlice} from "@reduxjs/toolkit"
 import img1 from "../assets/images/1.jpg";
+import img2 from "../assets/images/2.jpg";
+import img3 from "../assets/images/3.jpg";
+import img4 from "../assets/images/4.jpg";
+import img5 from "../assets/images/5.jpg";
+import img6 from "../assets/images/6.jpg";
+import img7 from "../assets/images/7.jpg";
+import img8 from "../assets/images/8.jpg";
+
 
 const DEFAULT_ITEMS = [
       {
@@ -16,7 +24,7 @@ const DEFAULT_ITEMS = [
       },
       {
         "id": "002",
-        "image": "images/2.jpg",
+        "image": img2,
         "company": "CUKOO",
         "item_name": "Women Padded Halter Neck Swimming Dress",
         "original_price": 2599,
@@ -28,7 +36,7 @@ const DEFAULT_ITEMS = [
       },
       {
         "id": "003",
-        "image": "images/3.jpg",
+        "image": img3,
         "company": "NUEVOSDAMAS",
         "item_name": "Women Red & White Printed A-Line Knee-Length Skirts",
         "original_price": 1599,
@@ -40,7 +48,7 @@ const DEFAULT_ITEMS = [
       },
       {
         "id": "004",
-        "image": "images/4.jpg",
+        "image": img4,
         "company": "ADIDAS",
         "item_name": "Indian Cricket ODI Jersey",
         "original_price": 999,
@@ -52,7 +60,7 @@ const DEFAULT_ITEMS = [
       },
       {
         "id": "005",
-        "image": "images/5.jpg",
+        "image": img5,
         "company": "Roadster",
         "item_name": "Pure Cotton T-shirt",
         "original_price": 1399,
@@ -64,7 +72,7 @@ const DEFAULT_ITEMS = [
       },
       {
         "id": "006",
-        "image": "images/6.jpg",
+        "image": img6,
         "company": "Nike",
         "item_name": "Men ReactX Running Shoes",
         "original_price": 14995,
@@ -76,7 +84,7 @@ const DEFAULT_ITEMS = [
       },
       {
         "id": "007",
-        "image": "images/7.jpg",
+        "image": img7,
         "company": "The Indian Garage Co",
         "item_name": "Men Slim Fit Regular Shorts",
         "original_price": 1599,
@@ -86,7 +94,7 @@ const DEFAULT_ITEMS = [
       },
       {
         "id": "008",
-        "image": "images/8.jpg",
+        "image": img8,
         "company": "Nivea",
         "item_name": "Men Fresh Deodrant 150ml",
         "original_price": 285,
